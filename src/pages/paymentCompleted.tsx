@@ -7,8 +7,7 @@ import { BsBoxSeam } from "react-icons/bs";
 export default function PaymentComplete() {
     return (
         <Flex w='100vw' h='100vh' alignItems='center' justifyContent='center'>
-            <Flex as='form' width='100%' maxWidth={390} bg='white' /* p='6' */ borderRadius={8} flexDirection='column'>
-                <Box>
+            <Flex as='form' width='100%' maxWidth={390} bg='white' borderRadius={8} flexDirection='column'>
                     <Box
                         bg='#2F3575'
                         p='6'
@@ -23,12 +22,11 @@ export default function PaymentComplete() {
                             Estamos preparando o seu pacote.
                         </Text>
                         <BsBoxSeam size={85} color="#191847" />
-                    </Box>
-                </Box>
+                    </Box>  
 
-                <Box p='6' display='flex' justifyContent='center' alignItems='center'>
-                    <Icon color='green' mr={5}><CheckIcon /></Icon>
-                    <Text fontWeight='bold'>
+                <Box p='6' display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
+                    <Icon color='green' m={5} w={8} h={8}><CheckIcon /></Icon>
+                    <Text fontWeight='bold' textAlign='center'>
                         Compra efetuada com sucesso! Confira seu e-mail.
                     </Text>
                 </Box>

@@ -1,36 +1,50 @@
-import { Flex, Button, Box, Text, Tab, TabList, TabPanel, TabPanels, Tabs, Link, FormControl, Image, FormLabel, Input, Icon, InputGroup, InputRightElement, useToast } from "@chakra-ui/react"
+import { Flex, Button, Box, Text, Tab, TabList, TabPanel, TabPanels, Tabs, Link, FormControl, Image, FormLabel, Input, Icon, useToast, InputGroup, InputRightElement } from "@chakra-ui/react"
 import { BsBoxSeam } from "react-icons/bs"
 import { TimeIcon } from "@chakra-ui/icons"
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
+import copy from "copy-to-clipboard"
 
 
 export default function Payment() {
-    const [show, setShow] = useState('00020126540014br.gov.bcb.pix0132pix_marketplace@mercadolibre.com520400005303986540580.955802BR5916AUGESTOREOFICIAL6008So Paulo62240520mpqrinter2394519376663041D53')
-    const handleClick = () => { setShow(show) }
-    const toast = useToast()
+    const keyPix = '25489385953282280213042552100532827638285537563146'
+    const [copyText, setCopyText] = useState(keyPix)
 
+    const handleCopyText = (e: { target: { value: SetStateAction<string> } }) => {
+        setCopyText(e.target.value);
+     } 
+     
+     const copyToClipboard = () => {
+        copy(copyText);
+        toast({
+            title: `${copyText}`,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+        }
+        )
+     }
+    
+    const toast = useToast()
 
     return (
         <Flex w='100vw' h='100vh' alignItems='center' justifyContent='center'>
-            <Flex as='form' width='100%' maxWidth={390} bg='white' /* p='6' */ borderRadius={8} flexDirection='column'>
-                <Box>
-                    <Box
-                        bg='#2F3575'
-                        p='6'
-                        borderRadius='0.5rem 0.5rem 0 0'
-                        display='flex'
-                        justifyContent='space-between'
-                        width='100%'>
-                        <Text
-                            color='white'
-                            fontSize={18}>
-                            Formulário <br /> para compra de <br /><strong>Pacote de adesivo.</strong>
-                        </Text>
-                        <BsBoxSeam size={85} color="#191847" />
-                    </Box>
+            <Flex as='form' width='100%' maxWidth={390} bg='white' borderRadius={8} flexDirection='column'>
+                <Box
+                    bg='#2F3575'
+                    p='6'
+                    borderRadius='0.5rem 0.5rem 0 0'
+                    display='flex'
+                    justifyContent='space-between'
+                    width='100%'>
+                    <Text
+                        color='white'
+                        fontSize={18}>
+                        Formulário <br /> para compra de <br /><strong>Pacote de adesivo.</strong>
+                    </Text>
+                    <BsBoxSeam size={85} color="#191847" />
                 </Box>
 
-                <Box mt={6} pl='6' pr='6'>
+                <Box mt={3} pl={6} pr={6}>
                     <Text fontWeight='bold'>
                         Forma de Pagamento
                     </Text>
@@ -50,18 +64,18 @@ export default function Payment() {
                                 </FormControl>
 
                                 <FormControl isRequired>
-                                    <FormLabel htmlFor='number'>Nome</FormLabel>
-                                    <Input id='number' />
+                                    <FormLabel htmlFor='name'>Nome</FormLabel>
+                                    <Input id='name' />
                                 </FormControl>
 
                                 <FormControl isRequired>
-                                    <FormLabel htmlFor='number'>Validade</FormLabel>
-                                    <Input id='number' type='number' placeholder='05/25' />
+                                    <FormLabel htmlFor='validation'>Validade</FormLabel>
+                                    <Input id='validation' type='text' placeholder='05/25' />
                                 </FormControl>
 
                                 <FormControl isRequired>
-                                    <FormLabel htmlFor='number'>CCV</FormLabel>
-                                    <Input id='number' type='number' />
+                                    <FormLabel htmlFor='ccv'>CCV</FormLabel>
+                                    <Input id='ccv' type='number' />
                                 </FormControl>
                             </TabPanel>
                             <TabPanel>
@@ -89,6 +103,20 @@ export default function Payment() {
                                         Pague e será creditado na hora
                                     </Text>
                                 </Box>
+
+                                <InputGroup size='md' mt={2}>
+                                    <Input
+                                        pr='4.5rem'
+                                        type='text'
+                                        value={copyText}
+                                        onChange={handleCopyText}
+                                    />
+                                    <InputRightElement width='4.5rem'>
+                                        <Button h='1.75rem' size='sm' onClick={copyToClipboard}>
+                                            Copiar
+                                        </Button>
+                                    </InputRightElement>
+                                </InputGroup>
                             </TabPanel>
                             <TabPanel>
                                 <Box>
@@ -108,7 +136,7 @@ export default function Payment() {
                     </Tabs>
                 </Box>
 
-                <Box mt={2}
+                <Box 
                     display='flex'
                     borderRadius='0 0 0.5rem 0.5rem'
                     justifyContent='end'

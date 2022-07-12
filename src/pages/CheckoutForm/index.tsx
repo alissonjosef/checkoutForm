@@ -5,7 +5,7 @@ import { Count } from "../../components/Count"
 import { useState } from "react"
 
 
-export const CheckouForm = () => {
+export const CheckoutForm = () => {
     const [currentStep, setCurrentStep] = useState(0)
 
     function next() {
@@ -17,7 +17,7 @@ export const CheckouForm = () => {
     }
     return (
         <Flex w='100vw' h='100vh' alignItems='center' justifyContent='center'>
-            <Flex as='form' width='100%' maxWidth={390} bg='white' /* p='6' */ borderRadius={8} flexDirection='column'>
+            <Flex as='form' width='100%' maxWidth={390} bg='white' borderRadius={8} flexDirection='column'>
                 <Box>
                     <Box
                         bg='#2F3575'

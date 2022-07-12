@@ -1,13 +1,10 @@
 
 import type { NextPage } from 'next'
-import { CheckouForm } from './CheckoutForm'
+import { CheckoutForm } from './CheckoutForm'
 
 const Home: NextPage = () => {
-  return (
-    <>
-      <CheckouForm />
-    </>
-  )
+  return <CheckoutForm />
+  
 }
 
 export default Home
