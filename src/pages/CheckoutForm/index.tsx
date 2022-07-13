@@ -6,18 +6,10 @@ import { useState } from "react"
 
 
 export const CheckoutForm = () => {
-    const [currentStep, setCurrentStep] = useState(0)
-
-    function next() {
-        setCurrentStep(currentStep + 1)
-    }
-
-    function back() {
-        setCurrentStep(currentStep - 1)
-    }
+    const [] = useState('')
     return (
-        <Flex w='100vw' h='100vh' alignItems='center' justifyContent='center'>
-            <Flex as='form' width='100%' maxWidth={390} bg='white' borderRadius={8} flexDirection='column'>
+        <Flex w='100vw' h='100vh' alignItems='center' justifyContent='center' >
+            <Flex as='form' width='100%' maxWidth={390} bg='white' borderRadius={8} flexDirection='column' boxShadow='10px 9px 28px -3px rgba(0,0,0,0.75)'>
                 <Box>
                     <Box
                         bg='#2F3575'
@@ -47,13 +39,13 @@ export const CheckoutForm = () => {
                     <Count />
                 </Box>
 
-                <Box p='6'>
+                <Box pl={6} pr={6} mb={2} mt={4}>
                     <Text fontWeight='bold'>
                         Observação:
                     </Text>
                     <Box>
                         <Textarea
-                            mt={5}
+                            mt={2}
                             bg='#DDE3E8'
                             placeholder='Alguma dúvida? Recado?' />
                     </Box>

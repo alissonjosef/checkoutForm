@@ -3,32 +3,32 @@ import { BsBoxSeam } from "react-icons/bs"
 import { TimeIcon } from "@chakra-ui/icons"
 import { SetStateAction, useState } from "react"
 import copy from "copy-to-clipboard"
-
+import FormCard from "../components/FormCard"
 
 export default function Payment() {
+    const toast = useToast()
     const keyPix = '25489385953282280213042552100532827638285537563146'
     const [copyText, setCopyText] = useState(keyPix)
 
     const handleCopyText = (e: { target: { value: SetStateAction<string> } }) => {
         setCopyText(e.target.value);
-     } 
-     
-     const copyToClipboard = () => {
+    }
+
+    const copyToClipboard = () => {
         copy(copyText);
         toast({
             title: `${copyText}`,
             status: 'success',
-            duration: 9000,
+            duration: 1000,
             isClosable: true,
+            position: 'top',
         }
         )
-     }
-    
-    const toast = useToast()
+    }
 
     return (
         <Flex w='100vw' h='100vh' alignItems='center' justifyContent='center'>
-            <Flex as='form' width='100%' maxWidth={390} bg='white' borderRadius={8} flexDirection='column'>
+            <Flex as='form' width='100%' maxWidth={390} bg='white' borderRadius={8} flexDirection='column' boxShadow='10px 9px 28px -3px rgba(0,0,0,0.75)'>
                 <Box
                     bg='#2F3575'
                     p='6'
@@ -58,29 +58,11 @@ export default function Payment() {
 
                         <TabPanels>
                             <TabPanel>
-                                <FormControl isRequired>
-                                    <FormLabel htmlFor='number'>Numero do Cartão</FormLabel>
-                                    <Input id='number' type='number' placeholder='1233 2223 4443 1111' />
-                                </FormControl>
-
-                                <FormControl isRequired>
-                                    <FormLabel htmlFor='name'>Nome</FormLabel>
-                                    <Input id='name' />
-                                </FormControl>
-
-                                <FormControl isRequired>
-                                    <FormLabel htmlFor='validation'>Validade</FormLabel>
-                                    <Input id='validation' type='text' placeholder='05/25' />
-                                </FormControl>
-
-                                <FormControl isRequired>
-                                    <FormLabel htmlFor='ccv'>CCV</FormLabel>
-                                    <Input id='ccv' type='number' />
-                                </FormControl>
+                                    <FormCard />
                             </TabPanel>
                             <TabPanel>
                                 <Text fontWeight='bold'>Escaneie este código para pagar</Text>
-                                <Box>
+                                <Flex flexDirection='column'>
                                     <Text>
                                         <strong>1.</strong> Acesse seu Internet Banking ou app de pagamentos.
                                     </Text>
@@ -92,11 +74,10 @@ export default function Payment() {
                                     <Text>
                                         <strong>3.</strong> Escaneie o seguinte código:
                                     </Text>
-                                </Box>
-                                <Box>
-                                    <Image src='https://upload.wikimedia.org/wikipedia/commons/5/5b/Qr-1.png' alt='Dan Abramov' />
-                                </Box>
-
+                                    <Flex w='100%' justifyContent='center'>
+                                        <Image boxSize={150} src='https://upload.wikimedia.org/wikipedia/commons/5/5b/Qr-1.png' alt='Dan Abramov' />
+                                    </Flex>
+                                </Flex>
                                 <Box display='flex' alignItems='center'>
                                     <Icon mr={2}><TimeIcon /></Icon>
                                     <Text>
@@ -136,7 +117,7 @@ export default function Payment() {
                     </Tabs>
                 </Box>
 
-                <Box 
+                <Box
                     display='flex'
                     borderRadius='0 0 0.5rem 0.5rem'
                     justifyContent='end'
@@ -157,7 +138,7 @@ export default function Payment() {
                                         status: 'success',
                                         duration: 9000,
                                         isClosable: true,
-                                        position: 'bottom-left',
+                                        position: 'top',
                                     }
                                     )}
                             >

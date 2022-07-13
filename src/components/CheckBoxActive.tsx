@@ -4,11 +4,11 @@ import { Stack, Checkbox, Box, Text } from "@chakra-ui/react"
 export const CheckBoxActive = () => {
     return (
         <>
-            <Box mb={5}>
+            <Box mb={2}>
                 <Text fontWeight='bold'>Quais adesivos:</Text>
             </Box>
 
-            <Stack spacing={2} direction='column'>
+            <Stack spacing={1} direction='column'>
                 <Checkbox colorScheme='facebook'>
                     React
                 </Checkbox>

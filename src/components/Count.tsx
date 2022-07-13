@@ -19,7 +19,7 @@ export const Count = () => {
     }
 
     return (
-        <Flex flexDirection='row' mt={6} gap={6} alignItems='center'>
+        <Flex flexDirection='row' mt={2} gap={6} alignItems='center'>
             <Button colorScheme='facebook' onClick={decrease}>-</Button>
             <Text>{count}</Text>
             <Button colorScheme='facebook' onClick={increase}>+</Button>
